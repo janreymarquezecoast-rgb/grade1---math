@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Star - Grade 1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8f7ff;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #4dabf7;
+            color: white;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .topic {
+            background: white;
+            width: 180px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 8px #bbb;
+        }
+
+        .topic h2 {
+            font-size: 20px;
+        }
+
+        button {
+            background: #ffc107;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #ffb300;
+        }
+
+        #activity {
+            background: white;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 8px #bbb;
+        }
+
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>⭐ Math Star ⭐</h1>
+    <p>Grade 1 Mathematics</p>
+</header>
+
+<div class="container">
+
+    <h2>Choose a Math Topic</h2>
+
+    <div class="topics">
+
+        <div class="topic">
+            <h2>🔢 Counting</h2>
+            <p>Learn to count numbers.</p>
+            <button onclick="counting()">Start</button>
+        </div>
+
+        <div class="topic">
+            <h2>➕ Addition</h2>
+            <p>Learn simple addition.</p>
+            <button onclick="addition()">Start</button>
+        </div>
+
+        <div class="topic">
+            <h2>➖ Subtraction</h2>
+            <p>Learn simple subtraction.</p>
+            <button onclick="subtraction()">Start</button>
+        </div>
+
+        <div class="topic">
+            <h2>🔷 Shapes</h2>
+            <p>Learn basic shapes.</p>
+            <button onclick="shapes()">Start</button>
+        </div>
+
+    </div>
+
+    <div id="activity">
+
+        <h2 id="question">
+            Choose a topic to start!
+        </h2>
+
+        <div id="answers"></div>
+
+        <p id="message"></p>
+
+        <p>⭐ Stars: <span id="score">0</span></p>
+
+    </div>
+
+</div>
+
+<script>
+
+let score = 0;
+
+function showQuestion(question, answers, correct) {
+
+    document.getElementById("question").innerHTML = question;
+
+    document.getElementById("answers").innerHTML = "";
+
+    document.getElementById("message").innerHTML = "";
+
+    answers.forEach(function(answer) {
+
+        let button = document.createElement("button");
+
+        button.innerHTML = answer;
+
+        button.onclick = function() {
+
+            if (answer == correct) {
+
+                score++;
+
+                document.getElementById("message").innerHTML =
+                    "🎉 Correct! Great job!";
+
+            } else {
+
+                document.getElementById("message").innerHTML =
+                    "😊 Good try!";
+
+            }
+
+            document.getElementById("score").innerHTML = score;
+
+        };
+
+        document.getElementById("answers").appendChild(button);
+    });
+}
+
+
+function counting() {
+
+    showQuestion(
+        "How many stars? ⭐ ⭐ ⭐ ⭐",
+        ["3", "4", "5"],
+        "4"
+    );
+
+}
+
+
+function addition() {
+
+    showQuestion(
+        "What is 2 + 3?",
+        ["4", "5", "6"],
+        "5"
+    );
+
+}
+
+
+function subtraction() {
+
+    showQuestion(
+        "What is 5 - 2?",
+        ["2", "3", "4"],
+        "3"
+    );
+
+}
+
+
+function shapes() {
+
+    showQuestion(
+        "Which shape has 3 sides?",
+        ["Circle", "Triangle", "Square"],
+        "Triangle"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
